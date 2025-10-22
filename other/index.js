@@ -32,13 +32,13 @@ const typesData = {
                 name: '부분일식',
                 date: '2029년 1월 14일',
                 description: '태양의 일부만 가려지는 일식',
-                gif: 'url(https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWZoanBjbTRxODlldHo4eXExY2thNzJscnE1bDdsZ3VkZzE1ODl0cSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/cn2weaeEW7znTDqCrZ/giphy.gif)'
+                gif: 'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWZoanBjbTRxODlldHo4eXExY2thNzJscnE1bDdsZ3VkZzE1ODl0cSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/cn2weaeEW7znTDqCrZ/giphy.gif'
             },
             {
                 name: '개기일식',
                 date: '2026년 8월 12일',
                 description: '태양 전체가 가려지는 일식',
-                gif: 'url(https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDN3d2szNGM4OGUycG8zNWVsdTBtMGZ6ZDB5eGl2ZmxrOWNsZzR5NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KyqsNHkqHT5CLBA3un/giphy.gif)'
+                gif: 'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDN3d2szNGM4OGUycG8zNWVsdTBtMGZ6ZDB5eGl2ZmxrOWNsZzR5NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KyqsNHkqHT5CLBA3un/giphy.gif'
             },
             {
                 name: '혼성일식',
@@ -73,7 +73,7 @@ const typesData = {
                 name: '반영월식',
                 date: '2027년 2월 21일',
                 description: '달이 지구의 반영(반그림자)에 가려져 흐릿해지는 월식',
-                gif: 'url(https://upload.wikimedia.org/wikipedia/commons/7/74/L%27%C3%A9clipse_du_31_d%C3%A9cembre_2009_%28animation%29.gif)'
+                gif: 'https://upload.wikimedia.org/wikipedia/commons/7/74/L%27%C3%A9clipse_du_31_d%C3%A9cembre_2009_%28animation%29.gif'
             }
         ]
     }
