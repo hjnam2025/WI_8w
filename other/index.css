@@ -1,0 +1,309 @@
+@font-face {
+    font-family: 'GMarketSans';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GMarketSans';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GMarketSans';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+    font-weight: 700;
+    font-display: swap;
+}
+
+.montserrat-alternates-regular {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.montserrat-alternates-thin-italic {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.montfont{
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+  font-size: 14rem;
+  color: white;
+  text-shadow: 0 0 20px #fff;
+
+}
+
+  .sansFont300 {
+    font-family: 'GmarketSans';
+    font-weight: 300;
+  }
+  .sansFont500 {
+    font-family: 'GmarketSans';
+    font-weight: 500;
+  }
+
+  .sansFont700 {
+    font-family: 'GmarketSans';
+    font-weight: 700;
+  }
+
+html, body{margin: 0; padding: 0; height: 100%}
+
+body {  
+  font-family: 'GmarketSans';
+  font-weight: 300;
+  word-break: keep-all;
+  overflow: hidden;
+  background-color: black;
+}
+
+p{
+   margin: 20px;
+}
+
+select {
+  transition: all 0.5s ease-in-out;;
+  font-family: 'GmarketSans';
+  font-weight: 500;
+  text-align: center;
+  width: 200px;
+  padding: 10px;
+  border: 1px solid #fff;
+  border-radius: 80px;
+  margin: 10px;
+  background: rgba(255,255,255,0.7);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  color: black;
+}
+
+ select.my-dropdown option {
+  font-family: 'GmarketSans';
+  font-weight: 500;
+  text-align: center;
+ }
+
+option {
+  padding: 10px;
+  font-family: 'GMarketSans';
+  font-weight: 300;
+}
+
+.t-shadow {
+  color: #F8F8FF;
+  text-shadow: 0 0 10px #000;
+}
+
+.wrap-all{
+    transition: all 0.5s ease-in-out;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 120px;
+    gap: 100px;  
+    }
+
+.left {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.co-wrapper{
+    flex-grow: 1; 
+}
+
+.right {
+    transition: all 0.5s ease-in-out;
+    width: 550px;
+    text-align: center;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+}
+
+#eclipse-gif {
+  width: 500px;
+  height: auto;
+  border-radius: 500px;
+}
+
+.blinking {animation: Blink 1.5s infinite alternate;}
+
+
+.button2site{
+  display: inline-block;
+  z-index: 10;
+  font-family: 'GmarketSans';
+  font-weight: 300;
+  font-size: 1rem;
+
+  text-decoration: none;
+  text-align: center;
+  color: white;
+  border-radius: 40px;
+  border: 1px solid white;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.button{
+  display: inline-block;
+  z-index: 10;
+  font-family: 'GmarketSans';
+  font-weight: 500;
+  font-size: 3rem;
+  text-decoration: none;
+  text-align: center;
+  color: white;
+  border-radius: 40px;
+
+  padding: 10px 0px;
+  width: 100px;
+  margin: 10px;
+  cursor: pointer;
+   animation: Blink2 1.5s infinite alternate;
+}
+
+@keyframes Blink2 {
+  0% {
+    filter:drop-shadow( 0 0 10px rgba(255, 255, 255, 0)); 
+  }
+  50% {
+    filter:drop-shadow(0 0 20px #ffffff); 
+  }
+  100% {
+    filter:drop-shadow( 0 0 10px rgba(255, 255, 255, 0)); 
+  }
+}
+
+.button:hover{
+    transform: scale(1.3);
+    transition: all 0.3s;
+}
+
+.button-wrap{
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row;
+  align-items: center;
+}
+
+.date{
+  font-size: 2rem;
+  padding: 10px;
+  border: 0.8px solid #fff;
+  border-radius: 50px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.85);
+  color: black;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 1); 
+  width: 400px;
+  margin-bottom: 10px;
+  display: none;
+  animation: Blink 1.5s alternate;
+  animation-iteration-count: 5;
+}
+
+@keyframes Blink {
+  0% {box-shadow: 0 0 30px rgba(255, 255, 255, 1); 
+    background: rgba(255, 255, 255, 0.85);
+    color: black;
+  }
+  50% {box-shadow: 0 0 10px rgba(0, 0, 0, 0.7); 
+    background: black;
+    color: white;
+      }
+  100% {box-shadow: 0 0 30px rgba(255, 255, 255, 1); 
+    background: rgba(255, 255, 255, 0.85);
+    color: black;
+  }
+}
+
+.point{
+  display: none; width: 80px; height: 40px;
+  filter: drop-shadow( 0 0 7px rgba(0, 0, 0, 0.7));
+}
+
+
+/*타이머*/
+#Timer {
+    font-size: 2em;
+    font-weight: 300;
+    color: white;
+    padding: 15px;
+    text-shadow: 0 0 8px #000;
+    text-align: center;
+    width: 700px;
+}
+
+#Timer div {
+    display: inline-block;
+    min-width: 50px; 
+    padding: 10px;
+    border-radius: 5px;
+    margin: 0 5px;
+}
+
+#Timer div span {
+    color: #ffffff;
+    display: block;
+    font-size: .4em;
+}
+
+body.initial-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  background-image: url('../other/imgs/star-bg.gif');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+body.initial-state .co-wrapper {
+  flex-grow: 0;
+}
+
+body.initial-state .wrap-all {
+    margin-top: 0; 
+    justify-content: center; 
+    width: auto; 
+}
+
+body.initial-state .montfont{
+  margin-bottom: 140px;
+}
+
+body.initial-state #eclipse-select {
+    transform: scale(1.5); 
+    font-size: 1.2rem; 
+    margin: 20px; 
+    width: 300px; 
+    animation: Blink 1.5s infinite alternate; 
+}
+body.initial-state .right {display: none;}
+body.initial-state .left {align-items: center; flex: 0;}
+body.initial-state #type-select {display: none; }
+
+body.initial-state #eclipse-description-display { display: none; }
+body.initial-state #type-description-display { display: none; }
+body.initial-state .button-wrap { display: none; }

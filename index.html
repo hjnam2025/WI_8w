@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>eclipse</title>
+	<script src="./other/index.js" defer> </script>
+	<link rel="stylesheet" href="./other/index.css" >
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,400;1,100&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+	<div class="montfont">eclipse</div>
+	<div class="wrap-all">
+		<div class="left">
+		<div class="co-wrapper">
+			<div style="text-align: center;">
+			<label for="eclipse-select"></label>
+			<select id="eclipse-select">
+			<option value="">식 선택</option>
+				<option value="Solar">일식</option>
+				<option value="Lunar">월식</option>
+			</select>
+				<label for="type-select"></label>
+				<select id="type-select">
+				<option value="">종류 선택</option>
+				</select>
+			</div>
+
+			<p class="sansFont500 t-shadow "
+			id="eclipse-description-display"></p>
+			<p class="sansFont300 t-shadow" style="font-size: 2rem; margin-bottom: 100px; color: white;"
+			id="type-description-display"></p> 
+
+			<a href="https://www.timeanddate.com/eclipse/list.html" class="button2site write-letter-item " style="display: none;" target='_blank'>관련 사이트</a>
+
+
+
+		<div class="button-wrap"> 
+			<a href="./other/letter.html" class="button write-letter-item" style="display: none;" >💿</a>
+			<img class="point write-letter-item" src="./other/imgs/point.gif">
+		</div>
+		</div>
+	</div>
+
+	<div class="right">
+		<p class="sansFont500 date" id="date-display"></p>
+		<div id="Timer"></div>
+		<img id="eclipse-gif" src="" alt="">
+		
+	</div>
+</div>
+
+</body>
+</html>

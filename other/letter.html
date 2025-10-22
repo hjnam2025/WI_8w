@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>eclipse-letter</title>
+
+	<link rel="stylesheet" href="./letter.css" >
+    <script src="./letter.js" defer></script>
+</head>
+<body>
+    <div id="background-container"></div>
+    <div id="start-overlay">
+		<button id="start-button">시작하기</button>
+		<div class="start-d"><< 달 클릭 후 태양쪽으로 드래그 >></div>
+	</div>
+
+	<div id="track-title"></div>
+    <audio id="background-music" loop></audio>
+
+    <div id="sun-container" class="eclipse-element solar">
+        <img id="prev-track" class="track-arrow left solar"  src="../other/imgs/prev.png">
+        <img id="sun-target" src="../other/imgs/sun.png" alt="Sun">
+        <img id="next-track" class="track-arrow right solar" src="../other/imgs/next.png">
+
+<div id="solar-instruction" class="instruction-text"></div>
+    </div>
+
+    <img id="solar-moon" class="eclipse-element solar" src="../other/imgs/moon.png" alt="Moon">
+
+
+
+    <img id="lunar-moon" class="eclipse-element lunar" src="../other/imgs/moon.png" alt="Moon">
+
+<div id="lunar-instruction" class="instruction-text"></div>
+
+    <div id="earth-shadow" class="eclipse-element lunar"></div>
+    
+    <img id="prev-track-lunar" class="track-arrow left eclipse-element lunar" src="../other/imgs/prev.png">
+    <img id="next-track-lunar" class="track-arrow right eclipse-element lunar" src="../other/imgs/next.png">
+
+<div class="button-wrapper">
+			<a href="../index.html" class="back-button">돌아가기</a>
+		</div>
+
+<div id="overlap-tooltip" class="circle-text"></div>
+
+</body>
+</html>

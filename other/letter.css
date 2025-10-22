@@ -1,0 +1,338 @@
+@font-face {
+    font-family: 'GMarketSans';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GMarketSans';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GMarketSans';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+    font-weight: 700;
+    font-display: swap;
+}
+
+  .sansFont300 {
+    font-family: 'GmarketSans';
+    font-weight: 300;
+  }
+  .sansFont500 {
+    font-family: 'GmarketSans';
+    font-weight: 500;
+  }
+
+  .sansFont700 {
+    font-family: 'GmarketSans';
+    font-weight: 700;
+  }
+
+/* 기본 리셋 및 폰트 */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #000; /* 기본 검은색 */
+    font-family: 'GmarketSans';
+    transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+p { color: white; }
+.white { color: white; }
+
+/* ▼▼▼ 4번 문제(월식/일식) 해결용 ▼▼▼ */
+.eclipse-element {
+    display: none; /* JS가 모드 확인 전까지 모두 숨김 */
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* 배경 타일 */
+#background-container {
+    position: fixed;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    width: calc(100% + 300px);
+    height: calc(100% + 200px);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.lyric-tile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 20rem;
+    font-size: 0.6rem;
+    word-break: break-all;
+    font-family: "GMarketSans";
+    font-weight: 300;
+    transition: all 0.4s;
+    margin: 2px; /* 흔들림 방지 */
+}
+
+/* 타일 스타일 (트랙별) */
+.style-a { background: white; color: black; border-radius: 100%; }
+.style-b { background: black; color: white; border-radius: 100%; }
+.style-c1 { background: #FFA500; color: white; border-radius: 100%; }
+.style-c2 { background: white; color: #FFA500; border-radius: 100%; }
+.style-d1 { background: #6869FF; color: #E5F0FF; border-radius: 100%; }
+.style-d2 { background: #E5F0FF; color: #6869FF; border-radius: 100%; }
+
+/* 타일 모양 (트랙별) */
+.s-circle { border-radius: 100%; }
+.s-diamond { clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); border-radius: 0; }
+.s-star { clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); border-radius: 0; }
+
+/* 시작 오버레이 */
+#start-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+#start-button {
+    padding: 15px 40px;
+    font-size: 1.5rem;
+    font-family: 'GmarketSans', sans-serif;
+    font-weight: 500;
+    color: white;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 10px white;
+    margin-bottom: 20px; /* 간격 추가 */
+}
+#start-button:hover {
+    background-color: white;
+    color: black;
+    transform: scale(1.1);
+    box-shadow: 0 0 20px white;
+    text-shadow: none;
+}
+.start-d {
+    font-family: 'GmarketSans';
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 2.5rem;
+    text-align: center; /* 중앙 정렬 */
+}
+
+/* 1. 일식(#sun-container, #solar-moon) 스타일 */
+#sun-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* display: flex; (JS가 제어) */
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+#sun-target {
+    width: 600px;
+    height: auto;
+}
+#solar-moon {
+    position: absolute;
+    transform: translate(20px, 20px);
+    width: 450px;
+    height: auto;
+    cursor: grab;
+    z-index: 2;
+    filter: brightness(1);
+    transition: filter 0.2s ease-out;
+}
+#solar-moon:active {
+    cursor: grabbing;
+}
+
+/* 2. 월식(#lunar-moon, #earth-shadow) 스타일 */
+#lunar-moon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: auto;
+    z-index: 2;
+    transition: filter 0.5s ease;
+}
+
+#lunar-moon.eclipsed {
+    filter: brightness(0.6) sepia(1) hue-rotate(-30deg) saturate(4);
+}
+
+#earth-shadow {
+    position: absolute;
+    transform: translate(20px, 20px);
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle at center, 
+        rgba(0, 0, 0, 0.85) 50%, 
+        rgba(0, 0, 0, 0.8) 80%, 
+        rgba(0, 0, 0, 0.1) 95%
+    );
+    filter: blur(25px);
+    z-index: 3;
+    cursor: grab;
+    transition: opacity 0.5s ease;
+    opacity: 1
+}
+
+#earth-shadow:active {
+    cursor: grabbing;
+}
+#earth-shadow.shadow-transparent {
+    opacity: 0.5;
+}
+
+/* 트랙 화살표 */
+.track-arrow {
+    width: 80px;
+    height: auto; 
+    cursor: pointer;
+    opacity: 0.9;
+    transition: all 0.2s ease;
+    z-index: 100;
+    position: fixed;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+}
+.track-arrow:hover {
+    opacity: 1;
+    transform: scale(1.2) translate(-50%, -50%);
+    filter: drop-shadow( 0 0 10px rgba(255, 255, 255, 0.7));
+}
+.track-arrow.left.solar {
+    left: -20%;
+}
+.track-arrow.right.solar {
+    left: 120%;
+}
+
+.track-arrow.left.lunar {
+    left: 30%;
+}
+.track-arrow.right.lunar {
+    left: 70%;
+}
+
+
+/* 곡 제목 스타일 */
+#track-title {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, 250px);
+    color: white;
+    font-size: 2rem;
+    font-weight: 300;
+    padding: 10px 50px;
+    border-radius: 30px;
+    background: rgba(0, 0, 0, 0.1);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.instruction-text {
+
+    position: absolute;
+    transform: translate(-50%, -50%);
+
+    color: rgba(255, 255, 255, 0.9);
+    
+    font-family: 'GmarketSans';
+    font-size: 1.4rem;
+    font-weight: 300;
+    text-shadow: 0 0 5px black;
+    z-index: 5; 
+    display: none; 
+
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.1);
+    padding: 10px 30px;
+    border-radius: 30px;
+    width: 450px;
+    text-align: center;
+
+}
+
+#solar-instruction{
+    top: 0%; left: 50%;
+}
+
+#lunar-instruction{
+    top: 20%; left: 50%;
+}
+
+.back-button{
+    position: absolute;
+    top: 15%; left: 85%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-decoration: none;
+
+    font-size: 1rem;
+    font-weight: 300;
+    padding: 10px 35px;
+    border: 1px solid white;
+    border-radius: 30px;
+    background: rgba(0, 0, 0, 0.5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    z-index: 1;
+}
+
+.circle-text {
+    position: absolute; /* 위치 조정을 위해 */
+    display: none; /* 처음엔 숨김 */
+    width: 400px; /* 원 크기 */
+    height: 250px;
+    background-color: rgba(0, 0, 0, 0.1);
+
+    color: white;
+    border-radius: 50%; /* 원 모양 */
+
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    text-align: center; 
+    
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.3rem;
+    word-break: keep-all;
+    z-index: 50;
+    pointer-events: none; 
+    opacity: 0;/
+    transition: opacity 0.3s ease-in-out;
+}
